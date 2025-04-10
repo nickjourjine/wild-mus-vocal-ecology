@@ -1,0 +1,28 @@
+name: test_audiomoth_env_20250225
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - astral
+  - ephem
+  - feather-format
+  - ipykernel
+  - jupyter
+  - jupyter_contrib_nbextensions
+  - matplotlib
+  - networkx
+  - pandas
+  - polars
+  - psycopg2
+  - python-igraph=0.11.2
+  - python-louvain
+  - python=3.9.13
+  - pytz
+  - seaborn
+  - statsmodels
+  - swifter
+  - tqdm
+  - umap-learn
+  - prettytable
+  - conda-forge::python-docx
+prefix: /Users/jourjine/miniconda3/envs/test_audiomoth_env_20250225
