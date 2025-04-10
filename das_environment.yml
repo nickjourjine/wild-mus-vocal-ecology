@@ -1,0 +1,17 @@
+name: test_das_20250311
+channels:
+  - conda-forge
+  - ncb
+  - nvidia
+  - apple
+dependencies:
+  - astral
+  - das=0.28.1
+  - ephem
+  - ipykernel
+  - ipywidgets
+  - python=3.9
+  - seaborn
+  - statsmodels
+  - python-igraph
+prefix: /Users/jourjine/miniconda3/envs/test_das_20250311
