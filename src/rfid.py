@@ -118,16 +118,8 @@ def get_quadrant_from_box(box):
     
 def get_exits(audio_date_time, rfid_df):
 
-    #check if the minute is one with a weird timestamp
-    file_path = '/Volumes/LaCie_barn/mouse_barn_audiomoth/parameters/non_00_seconds_timstamps_corrected.json'
-    weird_times = load_json(file_path)
-    if str(audio_date_time) in weird_times:
-        time_to_add = 54 # all of these are 54 seconds long instead of 55
-    else:
-        time_to_add = 55  
-        
-
     # for a given 55s recording, get how many mice existed the box
+	time_to_add = 55  
     recording_start = audio_date_time
     recording_stop = recording_start + timedelta(seconds=time_to_add)
     
@@ -139,19 +131,10 @@ def get_exits(audio_date_time, rfid_df):
     return exits
  
 def get_entrances(audio_date_time, rfid_df):
-    
-    #make sure you are starting at the beginning of each recording
-    audio_date_time = pd.to_datetime(audio_date_time)
-    
-    #check if the minute is one with a weird timestamp
-    file_path = '/Volumes/LaCie_barn/mouse_barn_audiomoth/parameters/non_00_seconds_timstamps_corrected.json'
-    weird_times = load_json(file_path)
-    if str(audio_date_time) in weird_times:
-        time_to_add = 54 # all of these are 54 seconds long instead of 55
-    else:
-        time_to_add = 55 
+ 
 
     # for a given 55s recording, get how many mice existed the box
+	time_to_add = 55
     recording_start = audio_date_time
     recording_stop = recording_start + timedelta(seconds=time_to_add)
     
@@ -164,15 +147,6 @@ def get_entrances(audio_date_time, rfid_df):
 
 def get_occupants_in_interval(audio_date_time, stays_df):
 	#get how many mice are in the box during a given 55 s recording
-
-	#    #check if the minute is one with a weird timestamp
-	#    file_path = '/Volumes/LaCie_barn/mouse_barn_audiomoth/parameters/non_00_seconds_timstamps_corrected.json'
-	#    weird_times = load_json(file_path)
-	#    if str(audio_date_time) in weird_times:
-	#        time_to_add = 54 # all of these are 54 seconds long instead of 55
-	#    else:
-	#        time_to_add = 55 
-	#    
 
 	# Assume recordings are 55 seconds long for now
 	time_to_add = 55 
@@ -322,126 +296,6 @@ def get_cooccupancy_matrix(mice, meets_df, stays_df):
 
 	return matrix, scores
 
-def make_social_network(mice, deployment, timestamp, mouse_stays_root, mouse_events_root, mouse_meetings_root):
-
-    #DEPRICATED - use get_igraph_network or get_cooccupancy_score instead
-    
-    #find the csv corresponding to the mouse meetings in this box for this deployment
-    deployment_end = deployment.split('-')[-1]
-    deployment_meets = glob.glob(os.path.join(mouse_meetings_root, ('').join(['*-',deployment_end,'*.csv'])))
-    assert len(deployment_meets) == 1 #there must be only one meetings file per deployment
-    
-    #find the cssv corresponding to the mouse stays for all boxes for this deployment - we need the stays to normalize and to 
-    #describe "self" social interactions of the mice
-    deployment_stays = glob.glob(os.path.join(mouse_stays_root, ('').join(['*-',deployment_end,'*.csv'])))
-    stays_df = pd.concat([pd.read_csv(i) for i in deployment_stays])
-    
-    #only consider meetings that started pre to timestamp and ignore meetings with 0 duration
-    meets_df = pd.read_csv(deployment_meets[0])
-    if len(meets_df) > 0:
-        meets_df['overlap_start_time'] = pd.to_datetime(meets_df['overlap_start_time'])
-        meets_df = meets_df[meets_df['overlap_start_time'] < datetime.strptime(timestamp, "%Y-%m-%d %H:%M:%S")]
-        meets_df =  meets_df[ meets_df['time_in_secs'] != 0]
-    else:
-        print('The meets csv for deployment',deployment, 'is empty')
-
-    #subset so that stays and meets cover the same time period. Stay records should always start earlier than meets
-    earliest_meet = pd.to_datetime(meets_df['overlap_start_time']).min()
-    stays_df = stays_df[pd.to_datetime(stays_df['entry_time']) >= earliest_meet]
-
-    #only consider stays that started pre to timestamp and ignore stays with 0 duration
-    if len(stays_df) > 0:
-        stays_df['entry_time'] = pd.to_datetime(stays_df['entry_time'])
-        stays_df = stays_df[stays_df['entry_time'] < datetime.strptime(timestamp, "%Y-%m-%d %H:%M:%S")]
-        stays_df =  stays_df[ stays_df['time_in_secs'] != 0]
-    else:
-        print('The stays csv for deployment',deployment, 'is empty')
-        return pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
-        
-    #initialize lists to collect data
-    social_network_meets = []
-    social_network_times = []
-    social_network_scores = []
-    mouse_IDs = []
-    
-    #for each mouse
-    for mouse in mice:
-  
-        overlap_durations = []
-        meets_with_others = []
-        overlap_scores = []
-        
-        mouse_IDs.append(mouse)
-
-        #find every ther mouse inclusing self
-        for other_mouse in mice:
-            
-            if mouse == other_mouse: #to describe "interactions" of mice with themselves
-                
-                these_meets = stays_df[stays_df['transponder_id'] == mouse]
-                
-                #overlap time is just how long the mouse was detected in this box
-                overlap_time = these_meets['time_in_secs'].sum()
-                overlap_durations.append(overlap_time)
-
-                #unique meets is the number of unique stays
-                unique_meetings = len(these_meets)
-                meets_with_others.append(unique_meetings)
-
-                #mice spend 100% of their time with themselves, so overlap score is 1
-                overlap_score = 1
-                overlap_scores.append(overlap_score)
-  
-            else:
-            
-                #get the meetings between these mice
-                these_meets = meets_df[((meets_df['id1'] == mouse) & (meets_df['id2'] == other_mouse)) | ((meets_df['id2'] == mouse) & (meets_df['id1'] == other_mouse))] 
-                
-                if len(these_meets) !=0: #if the mice met
-                
-                    #find the total overlap time
-                    overlap_time = these_meets['time_in_secs'].sum()
-                    overlap_durations.append(overlap_time)
-
-                    #get the total number of unique meets
-                    unique_meetings = len(these_meets)
-                    meets_with_others.append(unique_meetings)
-
-                    #find the normalized overlap (0 if mice spend no time together; 1 if mice spend all of their time together)
-                    mouse_total_time_in_boxes = stays_df['time_in_secs'][stays_df['transponder_id'] == mouse].sum()
-                    other_mouse_total_time_in_boxes = stays_df['time_in_secs'][stays_df['transponder_id'] == other_mouse].sum()
-                    
-                    #score Julian used: (time_together)/((time together) + (mouse1 total time - time together) + (mouse2 total time - time together)
-                    mouse_time_without_other = mouse_total_time_in_boxes - these_meets['time_in_secs'].sum()
-                    other_time_without_mouse = other_mouse_total_time_in_boxes - these_meets['time_in_secs'].sum()
-                    time_together = these_meets['time_in_secs'].sum()
-                    overlap_score = time_together/(time_together + mouse_time_without_other + other_time_without_mouse)
-                    overlap_scores.append(overlap_score)
-                    
-                else: #fill in appropriately
-                    
-                    #find the total overlap time
-                    overlap_durations.append(0)
-
-                    #get the total number of unique meets
-                    meets_with_others.append(0)
-
-                    #find the normalized overlap (0 if mice spend no time together; 1 if mice spend all of their time together)
-                    overlap_scores.append(0)
-                    
-        
-        #append data
-        social_network_meets.append(meets_with_others)
-        social_network_times.append(overlap_durations)
-        social_network_scores.append(overlap_scores)
-        
-    #make dataframes
-    social_network_meets_df = pd.DataFrame(social_network_meets, columns=mice, index=mice)
-    social_network_times_df = pd.DataFrame(social_network_times, columns=mice, index=mice)
-    social_network_scores_df = pd.DataFrame(social_network_scores, columns=mice, index=mice)
-        
-    return social_network_meets_df, social_network_times_df, social_network_scores_df
-
 def get_igraph_network(meets_df, stays_df=None, weight=True):
     # Builds a network from the meeting dataframe
     # Always returns a weighted network - either number of contacts if weight is False
@@ -526,65 +380,7 @@ def as_long_data_frame(graph):
         long_data[col] = ver[col]
 
     return long_data
-
-def find_recorded_meets(mouse_1, mouse_2, meets, v_events):
-	"""
-	
-	DEPRICATED 2023-12-18
-	
-	Give a pair of mice, a meetings dataframe, and a vocal events dataframe; get a dataframe of the meetings between them that were recorded
-	
-	"""
-
-	# find their meetings
-	these_meets = meets.loc[(meets['id1'].isin([mouse_1, mouse_2])) & (meets['id2'].isin([mouse_1, mouse_2]))].copy().reset_index()
-	these_meets = these_meets.assign(overlap_start_time=pd.to_datetime(these_meets['overlap_start_time']))
-	these_meets = these_meets.assign(overlap_end_time=pd.to_datetime(these_meets['overlap_end_time']))
-	these_meets['overlap_start_day'] = [pd.to_datetime(i.date()) for i in these_meets['overlap_start_time']]
-
-	# find which were at least partially recorded
-	recorded_meets = []
-	for idx, row in these_meets.iterrows():
-
-		time = these_meets['overlap_start_time'].iloc[idx]
-		box = these_meets['box'].iloc[idx]
-
-		if check_if_recorded(time, box):
-			recorded_meets.append(idx)
-
-	these_recorded_meets = these_meets.iloc[recorded_meets]    
-
-	# only search vocs during the days these mice meet and were recorded
-	v_events = v_events.assign(audiomoth_timestamp_datetime=pd.to_datetime(v_events['audiomoth_timestamp_datetime']))
-	these_v_events = v_events[(v_events['audiomoth_timestamp_datetime'].dt.date.isin(these_recorded_meets['overlap_start_day'].dt.date.unique())) 
-							  & v_events['box'].isin(these_recorded_meets['box'].unique())]
-	these_v_events = these_v_events.assign(audiomoth_start_seconds=pd.to_datetime(these_v_events['audiomoth_start_seconds']))
-	these_v_events = these_v_events.assign(audiomoth_stop_seconds=pd.to_datetime(these_v_events['audiomoth_stop_seconds']))
-
-	# for each meet, iterate through v_events and count rows between the start and stop of that meet in that box
-	squeak_counts = []
-	USV_counts = []
-
-	for _, row in these_recorded_meets.iterrows():
-
-		meet_start, meet_stop = row['overlap_start_time'], row['overlap_end_time']
-
-		# count the squeaks
-		squeak_count = len(these_v_events[(these_v_events['audiomoth_start_seconds'] > meet_start) 
-									   & (these_v_events['audiomoth_stop_seconds'] < meet_stop) 
-									   & (these_v_events['label'] == 'squeak')])
-		squeak_counts.append(squeak_count)
-
-		# count the USVs
-		USV_count = len(these_v_events[(these_v_events['audiomoth_start_seconds'] > meet_start) 
-									   & (these_v_events['audiomoth_stop_seconds'] < meet_stop) 
-									   & (these_v_events['label'] == 'USV')])
-		USV_counts.append(USV_count)
-
-	these_recorded_meets = these_recorded_meets.assign(squeak_count = squeak_counts)
-	these_recorded_meets = these_recorded_meets.assign(USV_count = USV_counts)
-
-	return these_recorded_meets      
+    
 def get_first_enterer_and_first_exiter(meets_df, meet_ID):
 	"""
 	Give a single row of a meets dataframe, get a dictionary with the IDs that entered first and exited first
@@ -972,7 +768,7 @@ def get_cooccupancy_index(mouse1, mouse2, meets_df, stays_df):
 
 def clip_stay_to_meet(stays_df, meets_df, meet_ID):
 	"""
-	Clip a stay corresponding to a given meet_ID - internal helper function for get_COI_in_window
+	Clip a stay corresponding to a given meet_ID - internal helper function
 	"""
 
 	# get info for this meet
@@ -1240,13 +1036,6 @@ def bin_vocal_latencies(latency_df, bin_width, groupby):
 
         # Cut latencies into bins, using the bin midpoints as labels
         bin_labels = pd.cut(group['latency_to_voc'], bins, right=False, labels=bin_labels_values)
-
-    #     # Diagnostic: Check for NaN values and correct placements
-    #     print(f"[Diagnostic] Event ID: {event_id}")
-    #     print(f"Latency Values: {group['latency_to_voc'].values}")
-    #     print(f"Binning Labels: {bin_labels.cat.categories}")
-    #     print(f"Bin Assignments: {bin_labels.values}")
-    #     print(f"NaN values in bin_labels: {bin_labels.isna().sum()}")
 
         # Count the occurrences in each bin
         bin_counts = bin_labels.value_counts().sort_index()
