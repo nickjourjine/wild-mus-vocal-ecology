@@ -10,9 +10,9 @@ This repository contains code needed to reproduce figures and analyses from "Voc
 
 ## How to use
 
-The code in this repository is intended to be used along with data at the Dryad repository here: ###
+The code in this repository is intended to be used along with data at the Dryad repository [here](link).
 
-To do this, take the following steps:
+To combine code and data:
 1. Clone or download this repository to your local machine. You should get a folder called wild-mus-vocal-ecology.
 2. Download the data folder at ###, then unzip it by clicking on it, running `tar -xf path/to/wild-mus-vocal-ecology-data.zip` (Windows PowerShell) or `unzip path/to/wild-mus-vocal-ecology-data.zip` (MacOS terminal). You should get a folder called wild-mus-vocal-ecology-data containing four directories: "data", "models", "parameters", and "annotations"
 3. Copy or move the contents of the data folder to the folder you cloned or downloaded from here (these should be the folders "data", "models", "parameters", and "annotations").  
