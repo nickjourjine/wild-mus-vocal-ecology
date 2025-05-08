@@ -223,15 +223,6 @@ def get_segments_batch(model_name, audio_dir, save_dir, segment_minlen, segment_
             pass
 
         else: #segment if not
-#            #calling get_segments is slower - 5 hours per moth per deployment   
-#            get_segments(model_name=model_name, 
-#                         model=model,
-#                         params=params,
-#                          wav=wav, 
-#                          save_dir=save_dir, 
-#                          segment_minlen=segment_minlen, 
-#                          segment_fillgap=segment_fillgap, 
-#                          segment_thres=segment_thres)
 
             #get wav file paths for das predict
             deployment = wav.split('/')[-2].split('_box')[0]
@@ -305,17 +296,6 @@ def get_segments_from_list(model_name, deployment, audio_dir, audio_list, save_d
     
     #exclude wav files that are zero bytes (written after SD card is full)
     audio_for_predict = [i for i in audio_for_predict if os.path.getsize(i) != 0]
-    
-#    #exclude wav files you already have predictions for
-#    if len([i for i in os.listdir(save_dir) if i.endswith('.csv')]) > 0:
-#        all_timestamps = [('_').join(i.split('_')[-2:]).split('.')[0] for i in os.listdir(save_dir) if i.endswith('.csv')]
-#        print(all_timestamps)
-#        last_timestamp = max([timestamps.audiomoth_to_datetime(i) for i in all_timestamps])
-#        audio_for_predict = [i for i in audio_for_predict if timestamps.audiomoth_to_datetime(i.split('/')[-1].split('.')[0]) > last_timestamp]
-#    
-#    #get the files you have already done
-#    done = [deployment+'_'+wav.split('/')[-1].split('.')[0]+'.csv' in os.listdir(save_dir) for wav in audio_for_predict]
-#    audio_for_predict = [i for i in audio_for_predict if i not in done]
     
     #initalize list to collect predictions
     all_predictions = []
@@ -633,12 +613,7 @@ def get_wav_clips(wavs_dir, save_location, source_data, margin, start_column, en
         sf_df = df.loc[df['source_file'] == file]
         num_vocs_to_process = len(sf_df)
         num_already_processed = len([i for i in already_processed if source_name.split('.')[0] in i])
-        
-#        print(num_vocs_to_process)
-#        print(num_already_processed)
-#        print(already_processed[0])
-#        print(('_').join([audiomoth, deployment,source_name.split('.')[0]]) in already_processed)
-        
+
         
         if ('_').join([audiomoth, deployment,source_name.split('.')[0]]) in already_processed and num_vocs_to_process==num_already_processed:
             continue
