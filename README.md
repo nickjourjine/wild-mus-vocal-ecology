@@ -35,8 +35,9 @@ Then run the following in the command line:
 	conda env create -f das_environment.yml -n das -v 
 
 	
-In the root directory of your project (where the src directory resides), install the necessary helper functions and set up Jupyter kernels by running:
+In the root directory of your project (i.e., the wild-mus-vocal-ecology directory), install the necessary helper functions and set up Jupyter kernels by running:
 
+	cd path/to/wild-mus-vocal-ecology
 	conda activate audiomoth
 	python -m ipykernel install --user --name audiomoth --display-name "audiomoth"
 	pip install -e .
@@ -50,9 +51,10 @@ This ensures that the helper functions are accessible in the notebooks and creat
 
 Then run
 
+	cd path/to/wild-mus-vocal-ecology
 	conda activate audiomoth
 	jupyter notebook
 	
-from the root directory to launch jupyter, navigate to the notebooks directory, and select the notebook you would like to use.
+to launch jupyter (a browser window should open), navigate to the notebooks directory, and select the notebook you would like to use.
 
 
