@@ -18,7 +18,7 @@ To do this, take the following steps:
 3. Copy or move the contents of the data folder to the folder you cloned or downloaded from here (these should be the folders "data", "models", "parameters", and "annotations").\
 To copy from the command line:  
 `rsync -ahP /path/to/wild-mus-vocal-ecology-data/ /path/to/wild-mus-vocal-ecology/`\
-To move from the command line: 
+To move from the command line:\ 
 `mv path/to/wild-mus-vocal-ecology-data/* /path/to/wild-mus-vocal-ecology/`
 
 4. Set up the necessary virtual environments and access the analysis notebooks using the steps below:
