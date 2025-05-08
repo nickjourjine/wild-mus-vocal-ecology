@@ -16,8 +16,8 @@ To do this, take the following steps:
 1. Clone or download this repository to your local machine. You should get a folder called wild-mus-vocal-ecology.
 2. Download the data folder at ###, then unzip it by clicking on it, running `tar -xf path/to/wild-mus-vocal-ecology-data.zip` (Windows PowerShell) or `unzip path/to/wild-mus-vocal-ecology-data.zip` (MacOS terminal). You should get a folder called wild-mus-vocal-ecology-data containing four directories: "data", "models", "parameters", and "annotations"
 3. Copy or move the contents of the data folder to the folder you cloned or downloaded from here (these should be the folders "data", "models", "parameters", and "annotations").\
-To copy from the command line: `rsync -ahP /path/to/wild-mus-vocal-ecology-data/ /path/to/wild-mus-vocal-ecology/`\
-To move from the command line: `mv path/to/wild-mus-vocal-ecology-data/* /path/to/wild-mus-vocal-ecology/`
+To copy from the command line:\ `rsync -ahP /path/to/wild-mus-vocal-ecology-data/ /path/to/wild-mus-vocal-ecology/`\
+To move from the command line:\ `mv path/to/wild-mus-vocal-ecology-data/* /path/to/wild-mus-vocal-ecology/`
 
 4. Set up the necessary virtual environments and access the analysis notebooks using the steps below:
 
