@@ -86,7 +86,7 @@ def recorded_boxes(data):
     plt.show()
 
     
-def get_box_colors(save=False):
+def get_box_colors(save=False, save_dir):
     
     unique_boxes = list(np.arange(2,42,2))
     
@@ -123,7 +123,7 @@ def get_box_colors(save=False):
     box_color_map = {k: box_color_map[k] for k in sorted(box_color_map)}
 
     if save:
-        parameters.save_json(box_color_map, save_dir='/Volumes/LaCie_barn/mouse_barn_audiomoth/parameters/', save_name='box_colors.json')
+        parameters.save_json(box_color_map, save_dir=save_dir, save_name='box_colors.json')
         return box_color_map
     
     return box_color_map
