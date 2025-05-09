@@ -71,7 +71,7 @@ Then run the following
 	conda activate audiomoth
 	jupyter notebook
 	
-to launch Jupyter (a browser window should open - if it doesn't, you can copy/paste the link that appears in the terminal window following these commands), navigate to the notebooks directory, and select the notebook you would like to use.
+to launch Jupyter. A browser window should open, but if it doesn't, you can copy/paste the link that appears in the terminal window following these commands. You should now be able to navigate to the notebooks directory and select the notebook you would like to use.
 
 If you have trouble completing any of this steps, please let me know by raising an issue! Just click the `Issues` button at the top of the page, then the big green `New Issue` button.
 
