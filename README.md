@@ -31,7 +31,7 @@ To combine code and data:
 
     - To move:  
 	    MacOS Terminal:  
-        `rsync -ahP --remove-source-files /path/to/wild-mus-vocal-ecology-data/ /path/to/wild-mus-vocal-ecology/`  
+        `mv /path/to/wild-mus-vocal-ecology-data/* /path/to/wild-mus-vocal-ecology/`  
 		Windows Powershell:  
 	    `Move-Item -Path "C:\path\to\wild-mus-vocal-ecology-data\*" -Destination "C:\path\to\wild-mus-vocal-ecology"` 
 
