@@ -15,17 +15,20 @@ The code in this repository is intended to be used along with data at the Dryad 
 To combine code and data:
 1. Clone or download this repository to your local machine by clicking the big green `<> Code` button above. You should get a folder called wild-mus-vocal-ecology.
 2. Download the data folder [here](link), then unzip it by clicking on it, or running
+    - `unzip path/to/wild-mus-vocal-ecology-data.zip` (MacOS Terminal)  
     - `Expand-Archive -Path path\to\wild-mus-vocal-ecology-data.zip -DestinationPath path\to\output-folder` (Windows Powershell) 
-	- `unzip path/to/wild-mus-vocal-ecology-data.zip` (MacOS Terminal).  
+	
 	
 	You should end up with a folder called wild-mus-vocal-ecology-data containing four directories: "data", "models", "parameters", and "annotations".  
 	
 3. Copy or move the contents of the wild-mus-vocal-ecology-data folder (not the folder itself) to the wild-mus-vocal-ecology folder you cloned or downloaded from this repository.  
 
     To copy:  
-    `rsync -ahP /path/to/wild-mus-vocal-ecology-data/ /path/to/wild-mus-vocal-ecology/`  
+    `rsync -ahP /path/to/wild-mus-vocal-ecology-data/ /path/to/wild-mus-vocal-ecology/` (MacOS Terminal) 
+	`Copy-Item -Path "C:\path\to\wild-mus-vocal-ecology-data\*" -Destination "C:\path\to\wild-mus-vocal-ecology" -Recurse` (Windows Powershell) 
     To move:  
-    `rsync -ahP --remove-source-files /path/to/wild-mus-vocal-ecology-data/ /path/to/wild-mus-vocal-ecology/`
+    `rsync -ahP --remove-source-files /path/to/wild-mus-vocal-ecology-data/ /path/to/wild-mus-vocal-ecology/` (MacOS Terminal) 
+	`Move-Item -Path "C:\path\to\wild-mus-vocal-ecology-data\*" -Destination "C:\path\to\wild-mus-vocal-ecology"` (Windows Powershell) 
 
 4. Set up the necessary virtual environments and access the analysis notebooks using the steps below:
 
@@ -58,13 +61,12 @@ Then install the necessary helper functions and set up Jupyter kernels by runnin
 	
 This ensures that the helper functions are accessible in the notebooks and creates dedicated Jupyter kernels for each environment, allowing you to switch between them within a single notebook.
 
-Then run
+Then run the following 
 
-	cd path/to/wild-mus-vocal-ecology
 	conda activate audiomoth
 	jupyter notebook
 	
-to launch jupyter (a browser window should open), navigate to the notebooks directory, and select the notebook you would like to use.
+to launch Jupyter (a browser window should open - if it doesn't, you can copy/paste the link that appears in the terminal window following these commands), navigate to the notebooks directory, and select the notebook you would like to use.
 
 If you have trouble completing any of this steps, please let me know by raising an issue (click issue on the options bar a top of the screen, then the big green "New Issue" button).
 
