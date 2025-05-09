@@ -86,7 +86,7 @@ def recorded_boxes(data):
     plt.show()
 
     
-def get_box_colors(save=False, save_dir):
+def get_box_colors(save_dir, save=False):
     
     unique_boxes = list(np.arange(2,42,2))
     
