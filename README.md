@@ -2,7 +2,7 @@
 
 This repository contains code needed to reproduce figures and analyses from "Vocal communication is seasonal in social groups of wild, free-living house mice" (Jourjine et al. 2025). It contains two directories.
 
-### 1. notebooks
+### 1. `notebooks`
 - Contains Jupyter notebooks for performing analyses (one per figure).
 
 ### 2. `src`
