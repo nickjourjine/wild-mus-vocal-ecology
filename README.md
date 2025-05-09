@@ -20,7 +20,7 @@ To combine code and data:
     To copy:  
     `rsync -ahP /path/to/wild-mus-vocal-ecology-data/ /path/to/wild-mus-vocal-ecology/`  
     To move:  
-    `mv path/to/wild-mus-vocal-ecology-data/* /path/to/wild-mus-vocal-ecology/`
+    `rsync -ahP --remove-source-files /path/to/wild-mus-vocal-ecology-data/ /path/to/wild-mus-vocal-ecology/`
 
 4. Set up the necessary virtual environments and access the analysis notebooks using the steps below:
 
@@ -56,5 +56,7 @@ Then run
 	jupyter notebook
 	
 to launch jupyter (a browser window should open), navigate to the notebooks directory, and select the notebook you would like to use.
+
+If you have trouble completing any of this steps, please let me know by raising an issue (click issue on the options bar a tope of the screen, then the big green "New Issue" button).
 
 
