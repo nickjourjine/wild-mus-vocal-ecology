@@ -118,32 +118,31 @@ def get_quadrant_from_box(box):
     
 def get_exits(audio_date_time, rfid_df):
 
-    # for a given 55s recording, get how many mice existed the box
+	# for a given 55s recording, get how many mice existed the box
 	time_to_add = 55  
-    recording_start = audio_date_time
-    recording_stop = recording_start + timedelta(seconds=time_to_add)
-    
-    #get the entrance times in this window (recording_start, recording_stop)
-    rfid_df['exit_time'] = pd.to_datetime(rfid_df['exit_time'])
-    exits = rfid_df.loc[((rfid_df['exit_time'] > recording_start)) & (rfid_df['exit_time'] < recording_stop)]
-    
-    #return
-    return exits
+	recording_start = audio_date_time
+	recording_stop = recording_start + timedelta(seconds=time_to_add)
+
+	#get the entrance times in this window (recording_start, recording_stop)
+	rfid_df['exit_time'] = pd.to_datetime(rfid_df['exit_time'])
+	exits = rfid_df.loc[((rfid_df['exit_time'] > recording_start)) & (rfid_df['exit_time'] < recording_stop)]
+
+	#return
+	return exits
  
 def get_entrances(audio_date_time, rfid_df):
  
-
-    # for a given 55s recording, get how many mice existed the box
+	# for a given 55s recording, get how many mice existed the box
 	time_to_add = 55
-    recording_start = audio_date_time
-    recording_stop = recording_start + timedelta(seconds=time_to_add)
-    
-    #get the entrance times in this window (recording_start, recording_stop)
-    rfid_df['entry_time'] = pd.to_datetime(rfid_df['entry_time'])
-    entrances = rfid_df.loc[(rfid_df['entry_time'] > recording_start) & (rfid_df['entry_time'] < recording_stop)]
-    
-    #return
-    return entrances
+	recording_start = audio_date_time
+	recording_stop = recording_start + timedelta(seconds=time_to_add)
+
+	#get the entrance times in this window (recording_start, recording_stop)
+	rfid_df['entry_time'] = pd.to_datetime(rfid_df['entry_time'])
+	entrances = rfid_df.loc[(rfid_df['entry_time'] > recording_start) & (rfid_df['entry_time'] < recording_stop)]
+
+	#return
+	return entrances
 
 def get_occupants_in_interval(audio_date_time, stays_df):
 	#get how many mice are in the box during a given 55 s recording
