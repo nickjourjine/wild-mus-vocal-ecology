@@ -10,7 +10,7 @@ This repository contains code needed to reproduce figures and analyses from "Voc
 
 ## How to use
 
-The code in this repository is intended to be used along with data at the Dryad repository [here](link).
+The code in this repository is intended to be used along with data at the Dryad repository [here](https://doi.org/10.5061/dryad.kprr4xhfk).
 
 To combine code and data:
 1. Clone or download this repository to your local machine by clicking the big green `<> Code` button above. You should get a folder called wild-mus-vocal-ecology.
