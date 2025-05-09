@@ -16,7 +16,7 @@ To combine code and data:
 1. Clone or download this repository to your local machine by clicking the big green `<> Code` button above. You should get a folder called wild-mus-vocal-ecology.
 2. Download the data folder [here](link), then unzip it by clicking on it, or running
     - `Expand-Archive -Path path\to\wild-mus-vocal-ecology-data.zip -DestinationPath path\to\output-folder` (Windows Powershell) 
-	- `unzip path/to/wild-mus-vocal-ecology-data.zip` (MacOS Terminal). 
+	- `unzip path/to/wild-mus-vocal-ecology-data.zip` (MacOS Terminal).  
 	You should end up with a folder called wild-mus-vocal-ecology-data containing four directories: "data", "models", "parameters", and "annotations".
 3. Copy or move the contents of the wild-mus-vocal-ecology-data folder (not the folder itself) to the wild-mus-vocal-ecology folder you cloned or downloaded from this repository.  
 
