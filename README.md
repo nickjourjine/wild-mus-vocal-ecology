@@ -3,7 +3,7 @@
 This repository contains code needed to reproduce figures and analyses from "Vocal communication is seasonal in social groups of wild, free-living house mice" (Jourjine et al. 2025). It contains two directories.
 
 ### 1. notebooks
-- Contains Jupyter notebooks for performing analyses and creating figures
+- Contains Jupyter notebooks for performing analyses (one per figure).
 
 ### 2. `src`
 - Contains helper functions used within the Jupyter notebooks.
@@ -13,9 +13,12 @@ This repository contains code needed to reproduce figures and analyses from "Voc
 The code in this repository is intended to be used along with data at the Dryad repository [here](link).
 
 To combine code and data:
-1. Clone or download this repository to your local machine. You should get a folder called wild-mus-vocal-ecology.
-2. Download the data folder at ###, then unzip it by clicking on it, running `tar -xf path/to/wild-mus-vocal-ecology-data.zip` (Windows PowerShell) or `unzip path/to/wild-mus-vocal-ecology-data.zip` (MacOS terminal). You should get a folder called wild-mus-vocal-ecology-data containing four directories: "data", "models", "parameters", and "annotations"
-3. Copy or move the contents of the data folder to the folder you cloned or downloaded from here (these should be the folders "data", "models", "parameters", and "annotations").  
+1. Clone or download this repository to your local machine by clicking the big green `<> Code` button above. You should get a folder called wild-mus-vocal-ecology.
+2. Download the data folder [here](link), then unzip it by clicking on it, or running
+    - `Expand-Archive -Path path\to\wild-mus-vocal-ecology-data.zip -DestinationPath path\to\output-folder` (Windows Powershell) 
+	- `unzip path/to/wild-mus-vocal-ecology-data.zip` (MacOS Terminal). 
+	You should end up with a folder called wild-mus-vocal-ecology-data containing four directories: "data", "models", "parameters", and "annotations".
+3. Copy or move the contents of the wild-mus-vocal-ecology-data folder (not the folder itself) to the wild-mus-vocal-ecology folder you cloned or downloaded from this repository.  
 
     To copy:  
     `rsync -ahP /path/to/wild-mus-vocal-ecology-data/ /path/to/wild-mus-vocal-ecology/`  
@@ -28,16 +31,20 @@ Download and install Anaconda following the instructions here if you haven't alr
 
 `https://docs.anaconda.com/getting-started/`
 
-Then run the following in the command line:
+Then run the following in your terminal (Powershell on Windows, Terminal app on Mac/Linux) to create the virtual environments:
 
 
 	conda env create -f audiomoth_environment.yml -n audiomoth -v 
 	conda env create -f das_environment.yml -n das -v 
 
 	
-In the root directory of your project (i.e., the wild-mus-vocal-ecology directory), install the necessary helper functions and set up Jupyter kernels by running:
+Move to the wild-mus-vocal-ecology directory:
+	
+   Mac/Linux: `cd path/to/wild-mus-vocal-ecology` 
+   Windows Powershell: `cd C:\path\to\wild-mus-vocal-ecology` 
 
-	cd path/to/wild-mus-vocal-ecology
+Then install the necessary helper functions and set up Jupyter kernels by running:
+
 	conda activate audiomoth
 	python -m ipykernel install --user --name audiomoth --display-name "audiomoth"
 	pip install -e .
@@ -57,6 +64,6 @@ Then run
 	
 to launch jupyter (a browser window should open), navigate to the notebooks directory, and select the notebook you would like to use.
 
-If you have trouble completing any of this steps, please let me know by raising an issue (click issue on the options bar a tope of the screen, then the big green "New Issue" button).
+If you have trouble completing any of this steps, please let me know by raising an issue (click issue on the options bar a top of the screen, then the big green "New Issue" button).
 
 
