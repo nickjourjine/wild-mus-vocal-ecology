@@ -24,11 +24,11 @@ To combine code and data:
 3. Copy or move the contents of the wild-mus-vocal-ecology-data folder (not the folder itself) to the wild-mus-vocal-ecology folder you cloned or downloaded from this repository.  
 
     To copy:  
-    `rsync -ahP /path/to/wild-mus-vocal-ecology-data/ /path/to/wild-mus-vocal-ecology/` (MacOS Terminal)  
+    `rsync -ahP /path/to/wild-mus-vocal-ecology-data/ /path/to/wild-mus-vocal-ecology/` (Mac Terminal)  
 	`Copy-Item -Path "C:\path\to\wild-mus-vocal-ecology-data\*" -Destination "C:\path\to\wild-mus-vocal-ecology" -Recurse` (Windows Powershell)  
 
     To move:  
-    `rsync -ahP --remove-source-files /path/to/wild-mus-vocal-ecology-data/ /path/to/wild-mus-vocal-ecology/` (MacOS Terminal)  
+    `rsync -ahP --remove-source-files /path/to/wild-mus-vocal-ecology-data/ /path/to/wild-mus-vocal-ecology/` (Mac Terminal)  
 	`Move-Item -Path "C:\path\to\wild-mus-vocal-ecology-data\*" -Destination "C:\path\to\wild-mus-vocal-ecology"` (Windows Powershell)  
 
 4. Set up the necessary virtual environments and access the analysis notebooks using the steps below:
@@ -46,7 +46,7 @@ Then run the following in your terminal (Powershell on Windows, Terminal app on 
 	
 Move to the wild-mus-vocal-ecology directory:
 	
-   Mac/Linux: `cd path/to/wild-mus-vocal-ecology` 
+   Mac/Linux: `cd path/to/wild-mus-vocal-ecology`  
    Windows Powershell: `cd C:\path\to\wild-mus-vocal-ecology` 
 
 Then install the necessary helper functions and set up Jupyter kernels by running:
