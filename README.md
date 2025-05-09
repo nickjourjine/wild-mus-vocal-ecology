@@ -24,7 +24,7 @@ To combine code and data:
 3. Copy or move the contents of the wild-mus-vocal-ecology-data folder (not the folder itself) to the wild-mus-vocal-ecology folder you cloned or downloaded from this repository.  
 
     To copy:  
-	    Mac Terminal App: 
+	    Mac Terminal App:  
     	`rsync -ahP /path/to/wild-mus-vocal-ecology-data/ /path/to/wild-mus-vocal-ecology/`  
 		Windows Powershell:  
 	    `Copy-Item -Path "C:\path\to\wild-mus-vocal-ecology-data\*" -Destination "C:\path\to\wild-mus-vocal-ecology" -Recurse` 
