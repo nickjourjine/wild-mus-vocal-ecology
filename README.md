@@ -73,6 +73,6 @@ Then run the following
 	
 to launch Jupyter (a browser window should open - if it doesn't, you can copy/paste the link that appears in the terminal window following these commands), navigate to the notebooks directory, and select the notebook you would like to use.
 
-If you have trouble completing any of this steps, please let me know by raising an issue! Just click issue on the options bar a top of the screen, then the big green `New Issue` button.
+If you have trouble completing any of this steps, please let me know by raising an issue! Just click the `Issues` button at the top of the page, then the big green `New Issue` button.
 
 
