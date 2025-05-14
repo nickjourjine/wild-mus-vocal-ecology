@@ -19,7 +19,7 @@ To combine code and data:
     - `Expand-Archive -Path path\to\wild-mus-vocal-ecology-data.zip -DestinationPath path\to\output-folder` (Windows Powershell) 
 	
 	
-	You should end up with a folder called wild-mus-vocal-ecology-data containing four directories: "data", "models", "parameters", and "annotations".  
+	You should end up with a folder called wild-mus-vocal-ecology-data containing four directories: "data", "models", and "annotations".  
 	
 3. Copy or move the contents of the wild-mus-vocal-ecology-data folder (not the folder itself) to the wild-mus-vocal-ecology folder you cloned or downloaded from this repository.  
 
