@@ -1,12 +1,15 @@
 # Vocal communication is seasonal in social groups of wild, free-living house mice
 
-This repository contains code needed to reproduce figures and analyses from "Vocal communication is seasonal in social groups of wild, free-living house mice" (Jourjine et al. 2025). It contains two directories.
+This repository contains code needed to reproduce figures and analyses from "Vocal communication is seasonal in social groups of wild, free-living house mice" (Jourjine et al. 2025). It contains three directories.
 
 ### 1. `notebooks`
-- Contains Jupyter notebooks for performing analyses (one per figure).
+- Jupyter notebooks for performing analyses (one per figure).
 
 ### 2. `src`
-- Contains helper functions used within the Jupyter notebooks.
+- Helper functions used within the Jupyter notebooks.
+
+### 2. `parameters`
+- Additional useful files (e.g., images) used by the notebooks to make figures. 
 
 ## How to use
 
