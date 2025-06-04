@@ -1,6 +1,16 @@
 # Vocal communication is seasonal in social groups of wild, free-living house mice
 
-This repository contains code needed to reproduce figures and analyses from "Vocal communication is seasonal in social groups of wild, free-living house mice" (Jourjine et al. 2025). It contains three directories.
+This repository contains code needed to reproduce figures and analyses from "Vocal communication is seasonal in social groups of wild, free-living house mice" (Jourjine et al. 2025). 
+
+## Scientific overview
+
+![graphical_abstract](graphical_abstract.jpg)
+
+The goal of this study was to better understand how acoustic communication shapes social dynamics in wild animal populations. To do this, we focused on a unique population of house mice living in a barn near Zürich, Switzerland. Each mouse in this population has been [RFID tagged](https://animalbiotelemetry.biomedcentral.com/articles/10.1186/s40317-015-0069-0), which allowed us to passively monitor population-wide social dynamics over long time scales (we analyzed a decade of data, from 2013-2023). Using [AudioMoth acoustic loggers](https://www.openacousticdevices.info/audiomoth), we also recorded vocalizations produced by groups of individually identifiable mice over the course of 16 months, from August 2022 to November 2023. These datasets revealed that acoustic communication in wild house mice is seasonal, with most vocalization occurring in spring and summer when mouse social groups are smallest, most dynamic, and most likely to contain pups. We also found that vocalizations are aligned in time to events that change social group membership, and are, on average, positively correlated with the strength of future social interactions between mouse pairs (i.e., how much time they spend together). These findings identify connections between acoustic communication and social dynamics in a wild animal population, providing insight into the behavioral ecology of one of the most widely used [laboratory model organisms](https://en.wikipedia.org/wiki/Laboratory_mouse).
+
+## How to use 
+
+This repository contains three directories:
 
 ### 1. `notebooks`
 - Jupyter notebooks for performing analyses (one per figure).
@@ -9,18 +19,16 @@ This repository contains code needed to reproduce figures and analyses from "Voc
 - Helper functions used within the Jupyter notebooks.
 
 ### 2. `parameters`
-- Additional useful files (e.g., images) used by the notebooks to make figures. 
+- Additional useful files (e.g., images) used by the notebooks to make figures.
 
-## How to use
+These are intended to be used along with data at the Dryad repository [here](https://doi.org/10.5061/dryad.kprr4xhfk).
 
-The code in this repository is intended to be used along with data at the Dryad repository [here](https://doi.org/10.5061/dryad.kprr4xhfk).
+To add the data and run analyses:
 
-To combine code and data:
 1. Clone or download this repository by clicking the big green `<> Code` button above. You should get a folder called wild-mus-vocal-ecology.
 2. Download the data folder [here](link), then unzip it by clicking on it, or running
     - `unzip path/to/wild-mus-vocal-ecology-data.zip` (MacOS Terminal)  
     - `Expand-Archive -Path path\to\wild-mus-vocal-ecology-data.zip -DestinationPath path\to\output-folder` (Windows Powershell) 
-	
 	
 	You should end up with a folder called wild-mus-vocal-ecology-data containing four directories: "data", "models", and "annotations".  
 	
