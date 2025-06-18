@@ -4,7 +4,7 @@ This repository contains code needed to reproduce figures and analyses from "Voc
 
 ## Scientific overview
 
-![graphical_abstract](graphical_abstract.jpg)
+![graphical_abstract](graphical_abstract_final_small.jpg)
 
 The goal of this study was to better understand how acoustic communication shapes social dynamics in wild animal populations. To do this, we focused on a unique population of house mice (*Mus musculus domesticus*) living in a barn near Zürich, Switzerland. Each mouse in this population has been [RFID tagged](https://animalbiotelemetry.biomedcentral.com/articles/10.1186/s40317-015-0069-0), which allowed us to passively monitor population-wide social dynamics over long time scales (we analyzed a decade of data, from 2013-2023). Using [AudioMoth acoustic loggers](https://www.openacousticdevices.info/audiomoth), we also recorded vocalizations produced by groups of individually identifiable mice over the course of 16 months, from August 2022 to November 2023. These datasets revealed that acoustic communication in wild house mice is seasonal, with most vocalization occurring in spring and summer when mouse social groups are smallest, most dynamic, and most likely to contain pups. We also found that vocalizations are aligned in time to events that change social group membership, and are, on average, positively correlated with the strength of future social interactions between mouse pairs (i.e., how much time they spend together). These findings identify connections between acoustic communication and social dynamics in a wild animal population, and provide insight into the behavioral ecology of one of the most widely used [laboratory model organisms](https://en.wikipedia.org/wiki/Laboratory_mouse).
 
