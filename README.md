@@ -2,9 +2,7 @@
 
 This repository contains code needed to reproduce figures and analyses from 
 
-Jourjine Nicholas, Goedecker Caspar, König Barbara and Lindholm Anna K. 2025.  
-Vocal communication is seasonal in social groups of wild, free-living house mice.  
-Proc. R. Soc. B.29220250995 http://doi.org/10.1098/rspb.2025.0995 
+Jourjine Nicholas, Goedecker Caspar, König Barbara and Lindholm Anna K. 2025. Vocal communication is seasonal in social groups of wild, free-living house mice. Proc. R. Soc. B.29220250995 http://doi.org/10.1098/rspb.2025.0995 
 
 ## Scientific overview
 
