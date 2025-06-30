@@ -1,6 +1,10 @@
 # Vocal communication in wild, free-living house mice
 
-This repository contains code needed to reproduce figures and analyses from "Vocal communication is seasonal in social groups of wild, free-living house mice" ([Jourjine *et al.* 2025. Proceedings of the Royal Society B](https://doi.org/10.1098/rspb.2025.0995)). 
+This repository contains code needed to reproduce figures and analyses from 
+
+Jourjine Nicholas, Goedecker Caspar, König Barbara and Lindholm Anna K. 2025.  
+Vocal communication is seasonal in social groups of wild, free-living house mice.  
+Proc. R. Soc. B.29220250995 http://doi.org/10.1098/rspb.2025.0995 
 
 ## Scientific overview
 
