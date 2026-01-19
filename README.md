@@ -20,7 +20,7 @@ This repository contains three directories:
 ### 2. `src`
 - Helper functions used within the Jupyter notebooks.
 
-### 2. `parameters`
+### 3. `parameters`
 - Additional useful files (e.g., images) used by the notebooks to make figures.
 
 These are intended to be used along with data at the Dryad repository [here](https://doi.org/10.5061/dryad.kprr4xhfk).
